@@ -14,6 +14,16 @@
 
 button {
     color: white;
+}
+
+.key.number {
     background-color: var(--number-key-color);
 }
 
+.key.special {
+    background-color: var(--special-key-color);
+}
+
+.key.operation {
+    background-color: var(--operation-key-color);
+}
