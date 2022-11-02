@@ -14,6 +14,12 @@
 
 button {
     color: white;
+    width: 25%;
+    aspect-ratio: 1;
+}
+
+#zero {
+    flex: 1; 
 }
 
 .key.number {
@@ -26,4 +32,14 @@ button {
 
 .key.operation {
     background-color: var(--operation-key-color);
+}
+
+#screen {
+    text-align: right;
+    height: 33%;
+}
+
+#keypad {
+    display: flex;
+    flex-wrap: wrap;
 }
