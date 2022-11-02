@@ -34,6 +34,14 @@ function operate(operation, a, b) {
 
 let displayValue = "0";
 
+// set a previous value (this will be filled in later)
+
+let previousValue = "";
+
+// set an operation (this will also be filled in later)
+
+let operation = "";
+
 // create a DOM object for the calculator display
 const display = document.querySelector("#display");
 display.textContent = displayValue;
@@ -49,7 +57,9 @@ const numberKeys = document.querySelectorAll(".key.number");
 // are special cases and are handled below.
 numberKeys.forEach((key) => {
     key.addEventListener('click', () => {
-        displayValue === "0" ? displayValue = key.textContent : displayValue += key.textContent;
+        displayValue === "0" ? 
+        displayValue = key.textContent : 
+        displayValue += key.textContent;
         display.textContent = displayValue;
     });
 });
@@ -78,3 +88,33 @@ clearKey.addEventListener('click', () => {
     displayValue = "0";
     display.textContent = displayValue;
 });
+
+// When an operator key is pressed, the display value should be saved as operandA.
+// create DOM objects for the operation keys
+const operationKeys = document.querySelectorAll(".key.operation");
+operationKeys.forEach((key) => {
+    key.addEventListener("click", () => {
+        previousValue = displayValue;
+        switch (key.id) {
+            case "add":
+                operation = add;
+                break;
+            case "subtract":
+                operation = subtract;
+                break;
+            case "multiply":
+                operation = multiply;
+                break;
+            case "divide":
+                operation = divide;
+                break;
+        };
+    });
+});
+
+
+// The display value should NOT be cleared, but the calculator should be put into a
+// state of "ready for next value," and once the user starts typing another number, 
+// the display value SHOULD be cleared.
+
+// The operation should also be saved.
