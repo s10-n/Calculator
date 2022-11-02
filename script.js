@@ -57,7 +57,7 @@ numberKeys.forEach((key) => {
 // create a DOM object for the zero key
 const zeroKey = document.querySelector("#zero");
 zeroKey.addEventListener('click', () => {
-    if (displayValue != "0") {
+    if (!(displayValue === "0")) {
         displayValue += zeroKey.textContent;
         display.textContent = displayValue;
     }
