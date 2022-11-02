@@ -5,34 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="calculator-body">
         <div id="screen">#VALUE</div>
         <div id="keypad">
-            <button id="clear" class="key">AC</button>
-            <button id="toggle-negative" class="key">+/-</button>
-            <button id="percentage" class="key">%</button>
-            <button id="divide" class="key">÷</button>
+            <button id="clear" class="key special">AC</button>
+            <button id="toggle-negative" class="key special">+/-</button>
+            <button id="percentage" class="key special">%</button>
+            <button id="divide" class="key operation">÷</button>
 
-            <button id="7" class="key">7</button>
-            <button id="8" class="key">8</button>
-            <button id="9" class="key">9</button>
-            <button id="multiply" class="key">×</button>
+            <button id="7" class="key number">7</button>
+            <button id="8" class="key number">8</button>
+            <button id="9" class="key number">9</button>
+            <button id="multiply" class="key operation">×</button>
 
-            <button id="4" class="key">4</button>
-            <button id="5" class="key">5</button>
-            <button id="6" class="key">6</button>
-            <button id="subtract" class="key">−</button>
+            <button id="4" class="key number">4</button>
+            <button id="5" class="key number">5</button>
+            <button id="6" class="key number">6</button>
+            <button id="subtract" class="key operation">−</button>
 
-            <button id="1" class="key">1</button>
-            <button id="2" class="key">2</button>
-            <button id="3" class="key">3</button>
-            <button id="add" class="key">+</button>
+            <button id="1" class="key number">1</button>
+            <button id="2" class="key number">2</button>
+            <button id="3" class="key number">3</button>
+            <button id="add" class="key operation">+</button>
 
-            <button id="0" class="key">0</button>
-            <button id="decimal" class="key">.</button>
-            <button id="equals" class="key">=</button>
+            <button id="0" class="key number">0</button>
+            <button id="decimal" class="key number">.</button>
+            <button id="equals" class="key operation">=</button>
         </div>
     </div>
     <script src="script.js">
