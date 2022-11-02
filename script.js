@@ -19,3 +19,13 @@ function multiply(multiplicand, multiplier) {
 function divide(dividend, divisor) {
     return dividend / divisor;
 }
+
+// Calculator functionality:
+
+// operate:
+// takes in one of the math operator functions above
+// along with two numbers and returns the result.
+
+function operate(operation, a, b) {
+    return operation(a,b);
+}
