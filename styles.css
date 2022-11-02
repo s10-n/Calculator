@@ -1,0 +1,19 @@
+:root {
+    --special-key-color: #a0a0a0;
+    --number-key-color: #313131;
+    --operation-key-color: #f69906;
+}
+
+#calculator-body {
+    background-color: black;
+    width: 375px;
+    height: 667px;
+    color: white;
+    font-family: sans-serif;
+}
+
+button {
+    color: white;
+    background-color: var(--number-key-color);
+}
+
