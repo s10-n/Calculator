@@ -63,6 +63,15 @@ zeroKey.addEventListener('click', () => {
     }
 });
 
+// create a DOM object for the decimal key
+const decimalKey = document.querySelector("#decimal");
+decimalKey.addEventListener("click", () => {
+    if (!(displayValue.includes("."))) {
+        displayValue += decimalKey.textContent;
+        display.textContent = displayValue;
+    }
+});
+
 // create a DOM object for the clear key
 const clearKey = document.querySelector("#clear");
 clearKey.addEventListener('click', () => {
