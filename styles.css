@@ -33,11 +33,15 @@ button {
     width: 160px;
 }
 
-.key.number {
+.key.number, 
+.key#zero, 
+.key#decimal {
     background-color: var(--number-key-color);
 }
 
-.key.number:active {
+.key.number:active,
+.key#zero:active, 
+.key#decimal:active {
     background-color: var(--number-key-color-pressed);
 }
 
