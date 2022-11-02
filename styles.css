@@ -1,7 +1,10 @@
 :root {
     --special-key-color: #a0a0a0;
+    --special-key-color-pressed: rgb(217,217,217);
     --number-key-color: #313131;
+    --number-key-color-pressed: rgb(115,115,115);
     --operation-key-color: #f69906;
+    --operation-key-color-pressed: rgb(251,199,141);
 }
 
 #calculator-body {
@@ -15,7 +18,10 @@
 button {
     color: white;
     width: 25%;
+    box-sizing: border-box;
     aspect-ratio: 1;
+    border-radius: 50%;
+    border: 0;
 }
 
 #zero {
@@ -26,12 +32,26 @@ button {
     background-color: var(--number-key-color);
 }
 
+.key.number:active {
+    background-color: var(--number-key-color-pressed);
+}
+
 .key.special {
     background-color: var(--special-key-color);
+    color: black;
+}
+
+.key.special:active {
+    background-color: var(--special-key-color-pressed);
 }
 
 .key.operation {
     background-color: var(--operation-key-color);
+}
+
+.key.operation:active {
+    background-color: var(--operation-key-color-pressed);
+    color: var(--operation-key-color);
 }
 
 #screen {
