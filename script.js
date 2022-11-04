@@ -2,7 +2,7 @@
 
 // Addition
 function add(addendA, addendB) {
-    return addendA + addendB;
+    return parseInt(addendA) + parseInt(addendB);
 }
 
 // Subtraction
@@ -34,17 +34,28 @@ function operate(operation, a, b) {
 
 let displayValue = "0";
 
+// Function to update the display value
+function updateDisplayValue(value) {
+    display.textContent = value;    
+};
+
 // set a previous value (this will be filled in later)
 
-let previousValue = "";
+let previousValue = "0";
 
 // set an operation (this will also be filled in later)
 
-let operation = "";
+let operation = function(){
+    return displayValue;
+};
+
+
+
+let readyForNewNumber = false;
 
 // create a DOM object for the calculator display
 const display = document.querySelector("#display");
-display.textContent = displayValue;
+updateDisplayValue(displayValue);
 
 // create a DOM object for the number keys
 const numberKeys = document.querySelectorAll(".key.number");
@@ -60,7 +71,7 @@ numberKeys.forEach((key) => {
         displayValue === "0" ? 
         displayValue = key.textContent : 
         displayValue += key.textContent;
-        display.textContent = displayValue;
+        updateDisplayValue(displayValue);
     });
 });
 
@@ -69,7 +80,7 @@ const zeroKey = document.querySelector("#zero");
 zeroKey.addEventListener('click', () => {
     if (!(displayValue === "0")) {
         displayValue += zeroKey.textContent;
-        display.textContent = displayValue;
+        updateDisplayValue(displayValue);
     }
 });
 
@@ -78,7 +89,7 @@ const decimalKey = document.querySelector("#decimal");
 decimalKey.addEventListener("click", () => {
     if (!(displayValue.includes("."))) {
         displayValue += decimalKey.textContent;
-        display.textContent = displayValue;
+        updateDisplayValue(displayValue);
     }
 });
 
@@ -86,12 +97,18 @@ decimalKey.addEventListener("click", () => {
 const clearKey = document.querySelector("#clear");
 clearKey.addEventListener('click', () => {
     displayValue = "0";
-    display.textContent = displayValue;
+    updateDisplayValue(displayValue);
 });
 
 // When an operator key is pressed, the display value should be saved as operandA.
 // create DOM objects for the operation keys
-const operationKeys = document.querySelectorAll(".key.operation");
+
+// The display value should NOT be cleared, but the calculator should be put into a
+// state of "ready for next value," and once the user starts typing another number, 
+// the display value SHOULD be cleared.
+
+// The operation should also be saved.
+/* const operationKeys = document.querySelectorAll(".key.operation");
 operationKeys.forEach((key) => {
     key.addEventListener("click", () => {
         previousValue = displayValue;
@@ -110,11 +127,8 @@ operationKeys.forEach((key) => {
                 break;
         };
     });
+}); */
+
+const plusKey = document.addEventListener("click", () => {
+    displayValue = add(displayValue, previousValue);
 });
-
-
-// The display value should NOT be cleared, but the calculator should be put into a
-// state of "ready for next value," and once the user starts typing another number, 
-// the display value SHOULD be cleared.
-
-// The operation should also be saved.
