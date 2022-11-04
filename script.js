@@ -102,6 +102,9 @@ clearKey.addEventListener('click', () => {
     displayValue = "0";
     previousValue = "0";
     result = "0";
+    operation = function(){
+        return displayValue;
+    };
     updateDisplayValue(displayValue);
 });
 
@@ -137,9 +140,9 @@ operationKeys.forEach((key) => {
 // Addition
 const addKey = document.querySelector("#add");
 addKey.addEventListener("click", () => {
+    performOperation();
     operation = add;
     previousValue = displayValue;
-    // displayValue = "0";
     readyForNewNumber = true;
     updateDisplayValue(displayValue);
 });
@@ -147,15 +150,34 @@ addKey.addEventListener("click", () => {
 // Subtraction
 const subtractKey = document.querySelector("#subtract");
 subtractKey.addEventListener("click", () => {
+    performOperation();
     operation = subtract;
     previousValue = displayValue;
-    // displayValue = "0";
     readyForNewNumber = true;
     updateDisplayValue(displayValue);
 });
 
-const equalsKey = document.querySelector("#equals");
-equalsKey.addEventListener("click", () => {
+// Multiplication
+const multiplyKey = document.querySelector("#multiply");
+multiplyKey.addEventListener("click", () => {
+    performOperation();
+    operation = multiply;
+    previousValue = displayValue;
+    readyForNewNumber = true;
+    updateDisplayValue(displayValue);
+});
+
+// Multiplication
+const divideKey = document.querySelector("#divide");
+divideKey.addEventListener("click", () => {
+    performOperation();
+    operation = divide;
+    previousValue = displayValue;
+    readyForNewNumber = true;
+    updateDisplayValue(displayValue);
+});
+
+function performOperation () {
     if (result == displayValue) {
         result = operate(operation,displayValue, previousValue);    
     }
@@ -166,4 +188,7 @@ equalsKey.addEventListener("click", () => {
     displayValue = result;
     readyForNewNumber = true;
     updateDisplayValue(displayValue);
-});
+};
+
+const equalsKey = document.querySelector("#equals");
+equalsKey.addEventListener("click", performOperation);
