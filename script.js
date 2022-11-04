@@ -133,6 +133,8 @@ operationKeys.forEach((key) => {
         };
     });
 }); */
+
+// Addition
 const addKey = document.querySelector("#add");
 addKey.addEventListener("click", () => {
     operation = add;
