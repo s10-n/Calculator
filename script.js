@@ -33,6 +33,7 @@ function operate(operation, a, b) {
 // set the initial display value for the screen
 
 let displayValue = "0";
+let result = "0";
 
 // Function to update the display value
 function updateDisplayValue(value) {
@@ -48,8 +49,6 @@ let previousValue = "0";
 let operation = function(){
     return displayValue;
 };
-
-
 
 let readyForNewNumber = false;
 
@@ -68,9 +67,13 @@ const numberKeys = document.querySelectorAll(".key.number");
 // are special cases and are handled below.
 numberKeys.forEach((key) => {
     key.addEventListener('click', () => {
-        displayValue === "0" ? 
-        displayValue = key.textContent : 
-        displayValue += key.textContent;
+        if (displayValue === "0" || readyForNewNumber) {
+            displayValue = key.textContent;
+        }
+        else {
+            displayValue += key.textContent;
+        }
+        readyForNewNumber = false;
         updateDisplayValue(displayValue);
     });
 });
@@ -97,6 +100,8 @@ decimalKey.addEventListener("click", () => {
 const clearKey = document.querySelector("#clear");
 clearKey.addEventListener('click', () => {
     displayValue = "0";
+    previousValue = "0";
+    result = "0";
     updateDisplayValue(displayValue);
 });
 
@@ -128,7 +133,20 @@ operationKeys.forEach((key) => {
         };
     });
 }); */
+const addKey = document.querySelector("#add");
+addKey.addEventListener("click", () => {
+    operation = add;
+    previousValue = displayValue;
+    // displayValue = "0";
+    readyForNewNumber = true;
+    updateDisplayValue(displayValue);
+});
 
-const plusKey = document.addEventListener("click", () => {
-    displayValue = add(displayValue, previousValue);
+const equalsKey = document.querySelector("#equals");
+equalsKey.addEventListener("click", () => {
+    result = operate(operation,displayValue,previousValue);
+    //previousValue = displayValue;
+    displayValue = result;
+    readyForNewNumber = true;
+    updateDisplayValue(displayValue);
 });
