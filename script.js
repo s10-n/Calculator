@@ -144,13 +144,23 @@ addKey.addEventListener("click", () => {
     updateDisplayValue(displayValue);
 });
 
+// Subtraction
+const subtractKey = document.querySelector("#subtract");
+subtractKey.addEventListener("click", () => {
+    operation = subtract;
+    previousValue = displayValue;
+    // displayValue = "0";
+    readyForNewNumber = true;
+    updateDisplayValue(displayValue);
+});
+
 const equalsKey = document.querySelector("#equals");
 equalsKey.addEventListener("click", () => {
     if (result == displayValue) {
-        result = operate(operation,displayValue,previousValue);    
+        result = operate(operation,displayValue, previousValue);    
     }
     else {
-        result = operate(operation,displayValue,previousValue);
+        result = operate(operation,previousValue,displayValue);    
         previousValue = displayValue;
     }
     displayValue = result;
