@@ -144,8 +144,13 @@ addKey.addEventListener("click", () => {
 
 const equalsKey = document.querySelector("#equals");
 equalsKey.addEventListener("click", () => {
-    result = operate(operation,displayValue,previousValue);
-    //previousValue = displayValue;
+    if (result == displayValue) {
+        result = operate(operation,displayValue,previousValue);    
+    }
+    else {
+        result = operate(operation,displayValue,previousValue);
+        previousValue = displayValue;
+    }
     displayValue = result;
     readyForNewNumber = true;
     updateDisplayValue(displayValue);
