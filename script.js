@@ -186,9 +186,13 @@ function performOperation () {
         previousValue = displayValue;
     }
     displayValue = result;
+    displayValue = displayValue.toString().length > 8 ? displayValue.toString().slice(0,8) : displayValue;
     readyForNewNumber = true;
     updateDisplayValue(displayValue);
 };
 
 const equalsKey = document.querySelector("#equals");
-equalsKey.addEventListener("click", performOperation);
+equalsKey.addEventListener("click", () => {
+    performOperation();
+    operation = function(){return displayValue};
+});
