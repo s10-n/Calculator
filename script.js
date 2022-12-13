@@ -152,7 +152,7 @@ multiplyKey.addEventListener("click", () => {
     updateDisplayValue(displayValue);
 });
 
-// Multiplication
+// Division
 const divideKey = document.querySelector("#divide");
 divideKey.addEventListener("click", () => {
     performOperation();
@@ -170,8 +170,14 @@ function performOperation () {
         result = operate(operation,previousValue,displayValue);    
         previousValue = displayValue;
     }
-    displayValue = result;
-    displayValue = displayValue.toString().length > 8 ? displayValue.toString().slice(0,8) : displayValue;
+    displayValue = result.toString().length > 8 ? result.toString().slice(0,8) : result;
+    if (displayValue == "Infinity") {
+        displayValue = "Nope."
+        const myTimeout = setTimeout(function() {
+            displayValue = "0";
+            updateDisplayValue(displayValue);
+        }, 2500);
+    };
     readyForNewNumber = true;
     updateDisplayValue(displayValue);
 };
