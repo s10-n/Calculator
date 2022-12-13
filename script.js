@@ -45,10 +45,11 @@ function updateDisplayValue(value) {
 let previousValue = "0";
 
 // set an operation (this will also be filled in later)
-
-let operation = function(){
+function placeholder() {
     return displayValue;
-};
+}
+
+let operation = placeholder;
 
 let readyForNewNumber = false;
 
@@ -81,8 +82,12 @@ numberKeys.forEach((key) => {
 // create a DOM object for the zero key
 const zeroKey = document.querySelector("#zero");
 zeroKey.addEventListener('click', () => {
-    if (!(displayValue === "0")) {
+    if (!(displayValue === "0") && (operation == placeholder)) {
         displayValue += zeroKey.textContent;
+        updateDisplayValue(displayValue);
+    }
+    else if (!(operation == placeholder)) {
+        displayValue = zeroKey.textContent;
         updateDisplayValue(displayValue);
     }
 });
@@ -116,26 +121,6 @@ clearKey.addEventListener('click', () => {
 // the display value SHOULD be cleared.
 
 // The operation should also be saved.
-/* const operationKeys = document.querySelectorAll(".key.operation");
-operationKeys.forEach((key) => {
-    key.addEventListener("click", () => {
-        previousValue = displayValue;
-        switch (key.id) {
-            case "add":
-                operation = add;
-                break;
-            case "subtract":
-                operation = subtract;
-                break;
-            case "multiply":
-                operation = multiply;
-                break;
-            case "divide":
-                operation = divide;
-                break;
-        };
-    });
-}); */
 
 // Addition
 const addKey = document.querySelector("#add");
@@ -194,5 +179,5 @@ function performOperation () {
 const equalsKey = document.querySelector("#equals");
 equalsKey.addEventListener("click", () => {
     performOperation();
-    operation = function(){return displayValue};
+    operation = placeholder;
 });
