@@ -82,7 +82,7 @@ numberKeys.forEach((key) => {
 // create a DOM object for the zero key
 const zeroKey = document.querySelector("#zero");
 zeroKey.addEventListener('click', () => {
-    if (!(displayValue === "0") && (operation == placeholder)) {
+    if (!(displayValue.slice(0) == "0") && !(readyForNewNumber)) {
         displayValue += zeroKey.textContent;
         updateDisplayValue(displayValue);
     }
